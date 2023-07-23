@@ -1,0 +1,11 @@
+@import "tailwindcss/base";
+@import "css/color.css";
+@import "css/variables.css";
+
+@import "tailwindcss/components";
+@import "css/card.css";
+
+@import "tailwindcss/utilities";
+@import "css/utils.css";
+
+@import "css/starfield.css"
