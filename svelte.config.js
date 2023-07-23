@@ -18,7 +18,10 @@ const config = {
 			fallback: undefined,
 			precompress: false,
 			strict: true
-		})
+		}),
+		paths: {
+			base: dev ? '' : '/nexizone.github.io'
+		},
 	}
 };
 
