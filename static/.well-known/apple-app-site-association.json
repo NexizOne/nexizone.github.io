@@ -1,0 +1,25 @@
+{
+    "applinks": {
+        "details": [
+            {
+                "appIDs": [
+                    "ABCDE12345.com.affise.app"
+                ],
+                "components": [
+                    {
+                        "/": "/*",
+                        "comment": "Matches any URL."
+                    },
+                    {
+                        "/": "/help/*",
+                        "?": { "articleNumber": "????" },
+                        "comment": "Matches any URL with a path that starts with /help/ and that has a query item with name 'articleNumber' and a value of exactly four characters."
+                    }
+                ]
+            }
+        ]
+    },
+    "webcredentials": {
+        "apps": ["ABCDE12345.com.affise.app"]
+    }
+}
