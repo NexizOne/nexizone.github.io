@@ -1,4 +1,5 @@
 // https://codepen.io/kaleolearn/pen/ExyRjJB
+@use "sass:math";
 
 $img: 'hyperspace.webp';
 $time: 90s;
@@ -37,16 +38,16 @@ $zturn: 1.2;
 
     &:nth-child(2) {
         animation: move $time infinite linear;
-        animation-delay: $time / 2;
+        animation-delay: math.div($time, 2);
     }
 
     &:nth-child(2) .wall {
-        animation-delay: $time / 2;
+        animation-delay: math.div($time, 2);
     }
 }
 
 .wall {
-    background: url('@/assets/images/' +$img);
+    background: url('@/assets/images/' + $img);
     background-size: cover;
 
     width: 100%;

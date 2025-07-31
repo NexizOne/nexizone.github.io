@@ -1,4 +1,6 @@
 // https://codepen.io/thebabydino/pen/KwPBvzo
+@use 'sass:list';
+
 // the rainbow palette
 $colors: #5ddcff, #3c67e3 43%, #4e00c2;
 $border-size: 6px; // border-width
@@ -55,7 +57,7 @@ $card-size: 30px;
         border-radius: inherit;
         /* reserve no-clip space for glow */
         box-shadow: 0 0 3*$card-size rgba(0 0 0/ .001);
-        background: conic-gradient(from var(--α), #{$colors}, #{nth($colors, 1)}) border-box;
+        background: conic-gradient(from var(--α), #{$colors}, #{list.nth($colors, 1)}) border-box;
         /* make everything inside padding-box transparent
 		 * by subtracting padding-box from no-clip box */
         mask: var(--full) no-clip subtract, var(--full) padding-box;
