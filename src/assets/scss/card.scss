@@ -1,0 +1,79 @@
+// https://codepen.io/thebabydino/pen/KwPBvzo
+// the rainbow palette
+$colors: #5ddcff, #3c67e3 43%, #4e00c2;
+$border-size: 6px; // border-width
+$border-radius: 8px;
+// $r: 2em; // blur radius TODO 30px?
+
+$color-card: #191c29;
+$card-heigt: 200px;
+$glow-time: 3s;
+$card-size: 30px;
+
+@property --α {
+    /* must register --α to animate it */
+    syntax: '<angle>';
+    initial-value: 0deg;
+    /* used only on pseudo, nowhere to be inherited, 
+	 * better perf if set false, see 
+	 * https://www.bram.us/2024/10/03/benchmarking-the-performance-of-css-property/ */
+    inherits: false
+}
+
+.g-card {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+    background: $color-card;
+    /* needed for absolutely positioned pseudo */
+    position: relative;
+    /* set dimensions IF even necessary to set, 
+	 * not given by content or parent layout */
+    // min-width: 30em;
+    height: $card-heigt;
+    aspect-ratio: 2 / 1;
+    /* transparent, just to reserve the space */
+    border: solid $border-size #0000;
+    padding: .75em;
+    /* space between border & text */
+    border-radius: 1em;
+    /* round corners */
+
+    &::before,
+    &::after {
+        // z-index: -1;
+        /* full opaque coverage of its box */
+        --full: conic-gradient(black 0 0);
+        /* grid doesn't work for stacking 
+		 * when a stacked item is text node */
+        position: absolute;
+        /* equal to the border-width with minus */
+        inset: -$border-size;
+        /* inherit parent box model & rounded corners */
+        border: inherit;
+        border-radius: inherit;
+        /* reserve no-clip space for glow */
+        box-shadow: 0 0 3*$card-size rgba(0 0 0/ .001);
+        background: conic-gradient(from var(--α), #{$colors}, #{nth($colors, 1)}) border-box;
+        /* make everything inside padding-box transparent
+		 * by subtracting padding-box from no-clip box */
+        mask: var(--full) no-clip subtract, var(--full) padding-box;
+        /* don't get in the way of selecting text */
+        pointer-events: none;
+        /* animate gradient start angle */
+        animation: α $glow-time linear infinite;
+        content: '';
+    }
+
+    /* turn one pseudo layer into glow */
+    &::after {
+        filter: blur($card-size)
+    }
+}
+
+@keyframes α {
+    to {
+        --α: 1turn
+    }
+}

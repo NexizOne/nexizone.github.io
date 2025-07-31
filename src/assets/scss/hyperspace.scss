@@ -1,0 +1,106 @@
+// https://codepen.io/kaleolearn/pen/ExyRjJB
+
+$img: 'hyperspace.webp';
+$time: 90s;
+$zturn: 1.2;
+
+.hpr {
+    overflow: hidden;
+    background: #000;
+    text-align: center;
+
+    &:before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+    }
+}
+
+.scene {
+    display: inline-block;
+    vertical-align: middle;
+    perspective: 5px;
+    perspective-origin: 50% 50%;
+    position: relative;
+}
+
+.wrap {
+    position: absolute;
+    width: 1000px;
+    height: 1000px;
+    left: -500px;
+    top: -500px;
+    transform-style: preserve-3d;
+    animation: move $time infinite linear;
+    animation-fill-mode: forwards;
+
+    &:nth-child(2) {
+        animation: move $time infinite linear;
+        animation-delay: $time / 2;
+    }
+
+    &:nth-child(2) .wall {
+        animation-delay: $time / 2;
+    }
+}
+
+.wall {
+    background: url('@/assets/images/' +$img);
+    background-size: cover;
+
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0;
+    animation: fade $time infinite linear;
+    animation-delay: 0;
+
+    &-right {
+        transform: rotateY(90deg) translateZ(500px);
+    }
+
+    &-left {
+        transform: rotateY(-90deg) translateZ(500px);
+    }
+
+    &-top {
+        transform: rotateX(90deg) translateZ(500px);
+    }
+
+    &-bottom {
+        transform: rotateX(-90deg) translateZ(500px);
+    }
+
+    &-back {
+        transform: rotateX(180deg) translateZ(500px);
+    }
+}
+
+@keyframes move {
+    0% {
+        transform: translateZ(-500px) rotate(0deg) rotateZ(0deg);
+    }
+
+    100% {
+        transform: translateZ(500px) rotate(0deg) rotateZ(360deg * $zturn);
+    }
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    75% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
