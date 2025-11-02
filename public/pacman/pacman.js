@@ -7,5 +7,5 @@ function FindProxyForURL(url, host) {
   // if (isResolvable(host)) return "DIRECT";
 
   // return `HTTP ${cent}:${port}; DIRECT`;
-  return `HTTP 185.103.253.138:4555;`;
+  return "PROXY 185.103.253.138:4555;";
 }
