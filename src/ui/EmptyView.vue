@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import Hyperspace from './components/Hyperspace.vue';
+import HyperspaceView from './components/HyperspaceView.vue';
 </script>
 
 <template>
-    <Hyperspace>
+    <HyperspaceView>
         <div class="d-flex justify-content-center  align-items-center h-100">
             <div class="g-card text-white">
                 Hi there 👋
             </div>
         </div>
-    </Hyperspace>
+    </HyperspaceView>
 </template>
 
 
