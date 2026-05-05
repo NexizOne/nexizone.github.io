@@ -3,17 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "engines": {
-    "node": "^20.19.0 || >=22.12.0"
-  },
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "build-only": "vite build",
-    "type-check": "vue-tsc --build",
-    "lint": "eslint . --fix",
-    "format": "prettier --write src/"
+    "type-check": "vue-tsc --build"
   },
   "dependencies": {
     "bootstrap": "^5.3.8",
@@ -22,21 +17,23 @@
     "vue-router": "^5.0.6"
   },
   "devDependencies": {
-    "@tsconfig/node22": "^22.0.5",
+    "@tsconfig/node24": "^24.0.4",
     "@types/node": "^25.6.0",
     "@vitejs/plugin-vue": "^6.0.6",
-    "@vue/eslint-config-prettier": "^10.2.0",
-    "@vue/eslint-config-typescript": "^14.7.0",
     "@vue/tsconfig": "^0.9.1",
-    "eslint": "^10.3.0",
-    "eslint-plugin-vue": "~10.9.1",
-    "jiti": "^2.6.1",
     "npm-run-all2": "^8.0.4",
-    "prettier": "3.8.3",
     "sass-embedded": "^1.99.0",
     "typescript": "~6.0.3",
     "vite": "^8.0.10",
     "vite-plugin-vue-devtools": "^8.1.1",
     "vue-tsc": "^3.2.8"
+  },
+  "overrides": {
+    "vite-plugin-inspect": {
+      "vite": "$vite"
+    }
+  },
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
   }
 }
