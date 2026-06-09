@@ -53,6 +53,8 @@ jobs:
         with:
           # Upload dist folder
           path: './dist'
+          # include .well-known/*
+          include-hidden-files: true
 
       - name: Deploy to GitHub Pages
         id: deployment
